@@ -8,8 +8,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (event: { preventDefault: () => void }) => {
-    event.preventDefault();
+  const handleLogin = async () => {
     setError(""); // Clear any previous errors
 
     const formData = new FormData();
@@ -26,7 +25,7 @@ export default function LoginPage() {
   };
 
   return (
-    <form>
+    <form action={handleLogin}>
       <div className="flex flex-col p-5 w-full items-center gap-4">
         <h1 className="text-3xl">Login</h1>
         {error && <p className="text-red-500">{error}</p>}{" "}
@@ -61,7 +60,7 @@ export default function LoginPage() {
         </div>
         <div className="mx-auto">
           <button
-            onClick={handleLogin}
+            // onClick={handleLogin}
             className="border-2 border-slate-600 px-2 py-1 rounded-lg text-lg mt-3"
           >
             Login
